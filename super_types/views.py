@@ -20,15 +20,15 @@ def types(request):
         
 @api_view(['GET','PUT','DELETE'])
 def types_detail(request, pk):
-    type = get_object_or_404(SuperType, pk=pk)
+    type_of = get_object_or_404(SuperType, pk=pk)
     if request.method == 'GET':
-        serializer = SuperTypeSerializer(type)
+        serializer = SuperTypeSerializer(type_of)
         return Response(SuperTypeSerializer.data)
     elif request.method == 'PUT':
-        serializer = SuperTypeSerializer(type)
+        serializer = SuperTypeSerializer(type_of)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(SuperTypeSerializer.data)
     elif request.method == 'DELETE':
-        type.delete()
+        type_of.delete()
         return Response("the item is deleted",status=status.HTTP_204_NO_CONTENT)

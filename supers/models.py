@@ -7,4 +7,3 @@ class Super:
     primary_ability = models.CharField(max_length=100)
     secondry_primary = models.CharField(max_length=100)
     catchphrase = models.CharField(max_length=100)
-    super_type = ForeignKey
