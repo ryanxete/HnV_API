@@ -28,7 +28,7 @@ def types_detail(request, pk):
         serializer = SuperTypeSerializer(type_of,data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
     elif request.method == 'DELETE':
         type_of.delete()
         return Response("the item is deleted",status=status.HTTP_204_NO_CONTENT)
