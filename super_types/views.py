@@ -23,12 +23,12 @@ def types_detail(request, pk):
     type_of = get_object_or_404(SuperType, pk=pk)
     if request.method == 'GET':
         serializer = SuperTypeSerializer(type_of)
-        return Response(SuperTypeSerializer.data)
+        return Response(serializer.data)
     elif request.method == 'PUT':
-        serializer = SuperTypeSerializer(type_of)
+        serializer = SuperTypeSerializer(type_of,data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(SuperTypeSerializer.data)
+        return Response(serializer.data)
     elif request.method == 'DELETE':
         type_of.delete()
         return Response("the item is deleted",status=status.HTTP_204_NO_CONTENT)
