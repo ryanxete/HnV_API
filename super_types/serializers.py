@@ -5,4 +5,3 @@ class SuperTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = SuperType
         fields = ['type']
-        depth = 1
